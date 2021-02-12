@@ -1,0 +1,31 @@
+h1{
+    text-align: center;
+}
+li{
+    display: inline-block;
+    margin: 0 20px 0 0;
+}
+
+th,td{
+    width:120px;
+    height:60px;
+}
+table{
+    border: 1px solid #000000;
+    text-align: center;
+}
+td{
+    background-color: #ffd7c7;
+}
+th{
+    background-color: #ffb386;
+}
+
+.si579{
+  font-weight:Bold;
+  background-color: #fff3eb;
+}
+
+a {
+    text-decoration: none;
+}
