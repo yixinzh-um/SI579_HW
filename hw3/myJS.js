@@ -10,16 +10,18 @@
 *
 */
 const box=document.getElementById('color-block');
+const colorName=document.getElementById('color-name')
 
 function changeColor(){
     //Write a condition determine what color it should be changed to
     if(box.getAttribute('class')=='red'){
-        box.setAttribute('style','background-color:#FFFF00 ')
-        box.setAttribute('class','yellow')
+        
+        
         //change the background color using JS
-
+        box.setAttribute('style','background-color:#FFFF00 ')
         //Change the text of the color using the span id color-name
-
+        box.setAttribute('class','yellow')
+        colorName.textContent='#FFFF00'
     }
     else{
         //change the background color using JS
@@ -27,6 +29,7 @@ function changeColor(){
         //Change the text of the color using the span id color-name
         box.setAttribute('style','background-color:#F08080')
         box.setAttribute('class','red')
+        colorName.textContent='#F08080'
 
     }
 };
