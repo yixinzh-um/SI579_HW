@@ -1,0 +1,93 @@
+body{
+    background-color: rgb(210, 244, 255);
+    background-image:url('https://cdn.dribbble.com/users/1803663/screenshots/5570301/mountain_house-1200-x-1600.png');
+    background-repeat:no-repeat;
+    background-size: cover;
+    padding:5%
+}
+h1{
+    text-align: center;
+}
+div#toDo,div#inProgress,div#estimated_time{
+    font-size: 1em;
+    background-color:rgba(0,0,0,0.4);
+    color:white;
+    padding: 1%;
+    position:relative
+    /* width: 400px;
+    height: 400px; */
+}
+div#inProgress{
+    margin-left:5%;
+    text-align: center;
+}
+
+.row{
+    min-height: 75vh
+}
+
+#add_input{
+    bottom:10px;
+    position:absolute
+}
+
+
+
+ul.no-bullets{
+    list-style-type: none;
+}
+
+input.hour{
+    position:absolute;
+    right:10%; 
+    opacity:0.8
+}
+
+i.fa-trash{
+    position:absolute;
+    right:3%;
+    margin-top: 6px;
+    /* margin:  auto; */
+}
+
+i.fa-clock{
+    text-align: center;
+    width: 100%;    
+}
+
+ul#task_list, h2#current_task{
+    color:rgb(180, 255, 202)
+}
+
+ul#task_list li:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: alias;
+}
+
+ul#task_list li:active{
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: alias;
+}
+div #clock{
+
+    margin-bottom: 10%;
+}
+div #time_left{
+    font-size: 3em;
+}
+
+button#finished{
+    margin:0 auto;
+    margin-bottom: 0px;
+    display: flex;
+}
+
+span#header{
+    display: inline-block;
+}
+
+table{
+    width: 100%;
+    text-align: right;
+    margin-bottom: 5%;
+}
