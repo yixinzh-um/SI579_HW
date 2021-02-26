@@ -14,7 +14,7 @@ function addTask(description){
     descriptionText.textContent=description
     descriptionText.setAttribute('style','display:inline-block')
     descriptionText.setAttribute('id',description)
-
+    HourInput.setAttribute('min','0');
     HourInput.setAttribute('type','number');
     HourInput.setAttribute('step','0.5');
     HourInput.setAttribute('class','col-sm-3 hour');
@@ -54,11 +54,18 @@ addTask('Cooking')
 
 
 const addButton=document.getElementById('add_button');
+
 addButton.addEventListener('click',() =>{
     const descriptionInput = document.getElementById('task_input');
     description=descriptionInput.value;
-    addTask(description)
-})
+    if(!description){
+        alert('Please enter a task');
+}else if(document.getElementById(description)){
+    alert('Task '+description+' already in the list')
+}else{
+    addTask(description);
+    descriptionInput.value=''
+}})
 
 
 
