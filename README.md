@@ -2,6 +2,8 @@
 
 Building Interactive Applications' homeworks.
 
-skills: 
+Skills: 
+
 until now: HTML, CSS, JavaScript, node.js
+
 to be continued: react.js
