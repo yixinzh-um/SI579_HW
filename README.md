@@ -31,4 +31,4 @@ to be continued: React.js
 
 **6 Webpack**
 
-  https://yixinzh-um.github.io/SI579_HW/hw6/todo
+  https://yixinzh-um.github.io/SI579_HW/hw6/dist/todo
