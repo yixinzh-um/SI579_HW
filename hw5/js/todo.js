@@ -38,7 +38,7 @@ function taskToCurrent(description,newTask){
     currentTask.textContent=description;
     
     const hours=newTask.children[1].value;
-    clock.textContent=moment().add(hours,'hour').format('HH:mm:ss A');
+    clock.textContent=moment().add(hours,'hour').format('YYYY-MM-DD HH:mm:ss A');
     timeLeft.textContent=moment.utc(hours*60*60*1000).format('HH:mm:ss')
     updateCurrentTask();
 
@@ -71,7 +71,8 @@ addButton.addEventListener('click',() =>{
 
 function updateCurrentTask(){
     // const clock = document.getElementById('clock');
-    var diff= moment(clock.textContent,'HH:mm:ss A').diff(moment());
+    var diff= moment(clock.textContent,'YYYY-MM-DD HH:mm:ss A').diff(moment());
+    
     if (diff>0){
         var update=setInterval(updateTimeLeft,1000);}    
 };
@@ -79,11 +80,13 @@ function updateCurrentTask(){
 function updateTimeLeft(){
     
     // const clock = document.getElementById('clock');
-    var diff= moment(clock.textContent,'HH:mm:ss A').diff(moment());
+    var diff= moment(clock.textContent,'YYYY-MM-DD HH:mm:ss A').diff(moment());
     if (diff<=0){
+        
         timeLeft.textContent=moment.utc(0).format('HH:mm:ss');
     }else{
     timeLeft.textContent=moment.utc(diff).format('HH:mm:ss');
+    
 }}
 
 
@@ -94,7 +97,10 @@ finishedButton.addEventListener('click', finishTask)
 function finishTask(){
     const descriptionText= document.getElementById(currentTask.textContent);
     descriptionText.setAttribute('style','display:inline-block;text-decoration:line-through;color:black;')
-    clock.textContent=moment().format('HH:mm:ss:A');
+    clock.textContent=moment().format('YYYY-MM-DD HH:mm:ss A');
     timeLeft.textContent=moment.utc(0).format('HH:mm:ss');
     
 }
+
+
+// setInterval(()=>{console.log(1)},1000); 

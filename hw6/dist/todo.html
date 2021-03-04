@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link href='../css/todo.css' rel='stylesheet'>
+
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js' defer></script> -->
+    <!-- <script src='js/index.js' type='text/javascript' defer></script> -->
+    <script src='../dist/main.js' type='text/javascript' defer></script>
+</head>
+
+<body >
+
+
+    <div class='row'>
+
+
+        <div id='toDo' class='col-sm-4'>
+            <h1>Task List</h1>
+            <table>
+                <tr><td>Task</td><td>Hour(s)</thd</tr>
+            </table>
+            <ul id='task_list'>          
+            </ul>
+            <div id='add_input' >
+                <input id='task_input' class='col-sm-8' type='text' placeholder="task">
+                <!-- <input id='hours_input' class='col-sm-3' type="number" step='0.5' placeholder="0">hour(s) -->
+                <button id='add_button'>Add</button>
+            </div>
+        </div>
+
+
+        <div id='inProgress'class='col-sm-7'>
+            <h1>Current Task</h1>
+            <p>Click the task in the left side to add it to current</p>
+
+            <h2 id='current_task'></h2>
+            <div id='clock'></div>
+            <i class="fas fa-clock fa-9x"></i>
+            <div id='time_left'></div>
+            <button id='finished'>Finished</button>
+        </div>
+    </div>  
+</body>
