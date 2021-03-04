@@ -30,3 +30,5 @@ to be continued: React.js
   https://yixinzh-um.github.io/SI579_HW/hw5/todo
 
 **6 Webpack**
+
+  https://yixinzh-um.github.io/SI579_HW/hw6/todo
