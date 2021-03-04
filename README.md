@@ -13,18 +13,20 @@ to be continued: React.js
 
   https://yixinzh-um.github.io/SI579_HW/hw1/home
 
-hw2 Basic CSS and JavaScript
+**2 Basic CSS and JavaScript**
 
   https://yixinzh-um.github.io/SI579_HW/hw2/home
 
-hw3 Building Reactive JavaScript
+**3 Building Reactive JavaScript**
 
   https://yixinzh-um.github.io/SI579_HW/hw3/index
 
-hw4 Integrating JavaScript
+**4 Integrating JavaScript**
 
   https://yixinzh-um.github.io/SI579_HW/hw4/app
 
-hw5 Integrating 3rd Party Libraries
+**5 Integrating 3rd Party Libraries**
 
   https://yixinzh-um.github.io/SI579_HW/hw5/todo
+
+**6 Webpack**
