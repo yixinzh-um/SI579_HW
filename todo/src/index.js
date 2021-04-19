@@ -1,77 +1,77 @@
 import * as moment from 'moment';
 import $ from 'jquery';
 
+const savedStr = localStorage.getItem('saved');
+const savedElements = savedStr ? JSON.parse(savedStr) : [];
 const timeLeft=$('#time_left');
 const currentTask=$('#current_task');
 const clock=$('#clock');
-const taskListElem = $('.taskList');
-const taskList = $('#toDo');
-console.log(taskListElem);
+const dailyListElem = document.getElementById('dailyList');
+console.log(savedElements);
+// console.log(dailyListElem);
 
-function addTask(description){
+const todaylistElem = $('#todayList');
+const taskList = $('#toDo');
+
+const dailyAddButton = document.getElementById('daily_button');
+const todayAddButton = document.getElementById('#today_button');
+const dailyInputElem = document.getElementById('daily_input');
+const todayInputElem = document.getElementById('today_input');
+
+dailyAddButton.addEventListener('click',()=>{
+    const task = dailyInputElem.value;
+    if(task){
+    addTask(task,dailyListElem);}
+})
+
+todayAddButton.addEventListener('click',()=>{
+    const task = todayInputElem.value;
+    if(task){
+    addTask(task,todayyListElem);}
+})
+
+
+
+
+
+function addTask(task, listElem){
 
     const newTask=document.createElement('li');
     const HourInput=document.createElement('input');
-    const descriptionText=document.createElement('p');
-    const removeButton=document.createElement('i')
+    const taskText=document.createElement('p');
+    const removeButton=document.createElement('i');
 
-    descriptionText.textContent=description
-    descriptionText.setAttribute('style','display:inline-block')
-    descriptionText.setAttribute('id',description)
+    taskText.textContent=task
+    taskText.setAttribute('style','display:inline-block')
+    taskText.setAttribute('id',task)
     HourInput.setAttribute('min','0');
     HourInput.setAttribute('type','number');
     HourInput.setAttribute('step','0.5');
     HourInput.setAttribute('class','col-sm-3 hour');
     HourInput.setAttribute('value','0');
 
-    removeButton.setAttribute('class','fas fa-trash')
 
 
     newTask.setAttribute('style','margin-bottom:10px col-sm-1')
-    newTask.append(descriptionText);
+    newTask.append(taskText);
     newTask.append(HourInput);
     newTask.append(removeButton);
     
-    newTask.addEventListener('click',function(){taskToCurrent(description,newTask)});
+    newTask.addEventListener('click',function(){taskToCurrent(task,newTask)});
     taskList.append(newTask);
-    taskToCurrent(description,newTask);   
+    taskToCurrent(task,newTask);   
 
 
 ///////new///////////////////////////////////
-    const taskItemElem = document.createElement('div');
-    const taskItemElemSub = document.createElement('div');
-    const strongElem = document.createElement('strong')
-    const aElem = document.createElement('a')
-    taskItemElem.setAttribute('class','py-2 mb-0 small lh-sm border-bottom w-100 taskItem');
-    taskItemElemSub.setAttribute('class','d-flex justify-content-between');
-    strongElem.setAttribute('class','text-grey-dark');
-    removeButton.style.display = 'inline-block';
-    removeButton.style.position = 'relative';
-    aElem.href='#'
-    aElem.textContent='Follow'
-    
-
-
-    removeButton.addEventListener('click',()=>{
-        newTask.remove();
-        taskItemElem.remove();
-    })
-
-    taskItemElemSub.textContent=description;
-
-    // taskItemElemSub.append(strongElem);
-    taskItemElemSub.append(removeButton);
-    taskItemElem.append(taskItemElemSub);
-    taskListElem.append(taskItemElem);
-    console.log(removeButton);   
-
-
+    savedElements.push(task);
+    localStorage.setItem('saved',JSON.stringify(savedElements)) 
+    updateTaskDisplay(listElem);
 
 
 }
 
-function taskToCurrent(description,newTask){
-    currentTask.textContent=description;
+function taskToCurrent(task,newTask){
+    currentTask.textContent=task;
     
     const hours=newTask.children[1].value;
     clock.textContent=moment().add(hours,'hour').format('YYYY-MM-DD HH:mm:ss A');
@@ -81,26 +81,69 @@ function taskToCurrent(description,newTask){
     
 };
 
+// const dailytask = ['Exercise','Cooking'];
 
-addTask('Exercise')
-addTask('Cooking')
+// if (savedElements.length==0){
+//     dailytask.forEach((task,idx)=>{
+//         addTask(task,dailyListElem);
+//         console.log(task);
+//     })
+// }
+
+function updateTaskDisplay(listElem){
+    // const t = listElem.innerText;
+    listElem.innerHTML="";
+    // listElem.innerText=t;
+    savedElements.forEach((task,idx)=>{
+        
+        const taskItemElem = document.createElement('div');
+        const taskItemElemSub = document.createElement('div');
+        const removeButton=document.createElement('i');
+        taskItemElem.setAttribute('class','py-2 mb-0 small lh-sm border-bottom w-100 taskItem');
+        taskItemElemSub.setAttribute('class','d-flex justify-content-between');
+        
+        removeButton.setAttribute('class','fas fa-trash')
+        removeButton.style.display = 'inline-block';
+        removeButton.style.position = 'relative';
+        removeButton.addEventListener('click',()=>{
+            savedElements.splice(idx,1);
+            localStorage.setItem('saved',JSON.stringify(savedElements));
+            console.log(savedElements);
+            updateTaskDisplay(listElem);
+            
+        })
+    
+
+        taskItemElemSub.textContent=task;
+        taskItemElemSub.append(removeButton);
+        taskItemElem.append(taskItemElemSub);
+        listElem.append(taskItemElem);
+        //mark 3
+        console.log('mark3')
+        
+    })
+}
+
+updateTaskDisplay(dailyListElem);
 
 
 
 
 
+
+///////////////////////////////////old/////////////////////////////////////
 const addButton=document.getElementById('add_button');
 
 addButton.addEventListener('click',() =>{
-    const descriptionInput = $('#task_input');
-    const description=descriptionInput.value;
-    if(!description){
+    const taskInput = $('#task_input');
+    const task=taskInput.value;
+    if(!task){
         alert('Please enter a task');
-}else if(document.getElementById(description)){
-    alert('Task '+description+' already in the list')
+}else if(document.getElementById(task)){
+    alert('Task '+task+' already in the list')
 }else{
-    addTask(description);
-    descriptionInput.value=''
+    addTask(task);
+    taskInput.value=''
 }})
 
 
@@ -131,8 +174,8 @@ finishedButton.addEventListener('click', finishTask)
 
 
 function finishTask(){
-    const descriptionText= document.getElementById(currentTask.textContent);
-    descriptionText.setAttribute('style','display:inline-block;text-decoration:line-through;color:black;')
+    const taskText= document.getElementById(currentTask.textContent);
+    taskText.setAttribute('style','display:inline-block;text-decoration:line-through;color:black;')
     clock.textContent=moment().format('YYYY-MM-DD HH:mm:ss A');
     timeLeft.textContent=moment.utc(0).format('HH:mm:ss');
     
