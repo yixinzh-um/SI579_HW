@@ -1,16 +1,18 @@
 import * as moment from 'moment';
-
+// import $ from 'jquery';
 //local storage
 const savedDailyStr = localStorage.getItem('daily');
 const savedDailyElements = savedDailyStr ? JSON.parse(savedDailyStr) : [];
 const savedTodayStr = localStorage.getItem('today');
 const savedTodayElements = savedDailyStr ? JSON.parse(savedTodayStr) : [];
 
+//time settings
 const timeLeft=document.getElementById('time_left');
 const currentTask=document.getElementById('current_task');
 const clock=document.getElementById('clock');
 const dailyListElem = document.getElementById('dailyList');
 const todayListElem = document.getElementById('todayList');
+
 
 //task list
 const dailyAddButton = document.getElementById('daily_button');
@@ -107,8 +109,7 @@ function updateTaskDisplay(type,listElem,savedElements){
     })
 }
 
-updateTaskDisplay('daily',dailyListElem,savedDailyElements);
-updateTaskDisplay('today',todayListElem,savedTodayElements);
+
 
 
 
@@ -137,6 +138,7 @@ function updateTaskList(task){
         taskToCurrent(task,rowElem);
     })
     tableElem.append(rowElem);
+    $('#table').bootstrapTable();
     console.log(tableElem);}
 
 
@@ -181,3 +183,6 @@ function taskToCurrent(task,rowElem){
     timeLeft.textContent=moment.utc(hours*60*60*1000).format('HH:mm:ss')
     updateCurrentTask();  
 };
+
+updateTaskDisplay('daily',dailyListElem,savedDailyElements);
+updateTaskDisplay('today',todayListElem,savedTodayElements);
