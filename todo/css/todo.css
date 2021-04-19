@@ -10,9 +10,9 @@ h1{
 }
 div#toDo,div#inProgress,div#estimated_time{
     font-size: 1em;
-    background-color:rgba(0,0,0,0.4);
-    color:white;
-    padding: 1%;
+    /* background-color:rgba(0,0,0,0.4); */
+    color:rgb(0, 0, 0);
+    /* padding: 1%; */
     position:relative;
     display:inline-block;
     /* width: 400px;
@@ -22,20 +22,19 @@ div#toDo,div#inProgress,div#estimated_time{
 
 
 div#inProgress{
-    margin-left:5%;
+    /* margin-left:5%; */
     text-align: center;
 }
 
+hour
 
 
 
-.row{
-    min-height: 75vh
-}
-
-#add_input{
+#hour_input{
     bottom:10px;
-    position:absolute
+    position:absolute;
+    width:10%;
+    color:green;
 }
 
 
@@ -65,7 +64,7 @@ i.fa-clock{
 }
 
 ul#task_list, h2#current_task{
-    color:rgb(180, 255, 202)
+    color:rgb(167, 6, 0)
 }
 
 ul#task_list li:hover{
